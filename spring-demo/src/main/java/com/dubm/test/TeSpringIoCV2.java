@@ -37,6 +37,7 @@ public class TeSpringIoCV2 {
         Map<String,Object> param = new HashMap<>();
         param.put("id",5L);
         List<User> users = userService.listByMap(param, "queryUserById");
+        System.out.println(users);
     }
 
     @Before
@@ -154,8 +155,6 @@ public class TeSpringIoCV2 {
             bean = clazz.newInstance();
             List<PropertyValue> propertyValues = beanDefinition.getPropertyValues();
             for (PropertyValue p : propertyValues) {
-
-
                 String fieldName = p.getName();
                 Object fieldValue = p.getValue();
                 Object value = resolveValueOrReference(fieldValue, p);
@@ -163,11 +162,11 @@ public class TeSpringIoCV2 {
                     Field declaredField = clazz.getDeclaredField(fieldName);
                     declaredField.setAccessible(true);
                     declaredField.set(bean, value);
-                    return bean;
                 } catch (NoSuchFieldException e) {
                     e.printStackTrace();
                 }
             }
+            return bean;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -188,9 +187,6 @@ public class TeSpringIoCV2 {
                 return v;
             }
         }
-
         return null;
     }
-
-
 }

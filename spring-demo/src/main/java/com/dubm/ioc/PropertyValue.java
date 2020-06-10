@@ -3,6 +3,9 @@ package com.dubm.ioc;
 public class PropertyValue {
 
     private String name;
+    /**
+     * 使用Object的原因是，不知道value是'value'还是'ref'
+     */
     private Object value;
 
     public PropertyValue(String name, Object value) {
