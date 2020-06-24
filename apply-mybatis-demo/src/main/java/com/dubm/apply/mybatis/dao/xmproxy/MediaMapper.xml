@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dubm.apply.mybatis.dao.xmproxy.MediaMapper">
+    <resultMap id="BaseResultMap" type="com.dubm.apply.mybatis.po.Media">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="media_name" property="mediaName" jdbcType="VARCHAR"/>
+        <result column="media_full_name" property="mediaFullName" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="pay_method" property="payMethod" jdbcType="VARCHAR"/>
+        <result column="create_id" property="createId" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_id" property="modifyId" jdbcType="BIGINT"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="received_subject" property="receivedSubject" jdbcType="VARCHAR"/>
+        <result column="received_acct" property="receivedAcct" jdbcType="VARCHAR"/>
+        <result column="bank_name" property="bankName" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="new_media" property="newMedia" jdbcType="VARCHAR"/>
+        <result column="new_rebate" property="newRebate" jdbcType="VARCHAR"/>
+        <result column="rebate_instructions" property="rebateInstructions" jdbcType="VARCHAR"/>
+        <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
+        <result column="media_amount" property="mediaAmount" jdbcType="DECIMAL"/>
+        <result column="deposit_amount" property="depositAmount" jdbcType="DECIMAL"/>
+        <result column="deposit_status" property="depositStatus" jdbcType="TINYINT"/>
+        <result column="period_start" property="periodStart" jdbcType="DATE"/>
+        <result column="period_end" property="periodEnd" jdbcType="DATE"/>
+        <result column="co_id" property="coId" jdbcType="BIGINT"/>
+        <result column="total_deposit_amount" property="totalDepositAmount" jdbcType="DECIMAL"/>
+        <result column="total_recharge_amount" property="totalRechargeAmount" jdbcType="DECIMAL"/>
+        <result column="media_flag" property="mediaFlag" jdbcType="INTEGER"/>
+        <result column="split_flag" property="splitFlag" jdbcType="TINYINT"/>
+        <result column="is_small_media" property="isSmallMedia" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, media_name, media_full_name, address, pay_method, create_id, create_time, modify_id,
+    modify_time, received_subject, received_acct, bank_name, remark, new_media, new_rebate, 
+    rebate_instructions, del_flag, media_amount, deposit_amount, deposit_status, period_start, 
+    period_end, co_id, total_deposit_amount, total_recharge_amount, media_flag, split_flag, 
+    is_small_media
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from media
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.dubm.apply.mybatis.po.Media">
+        insert into media (id, media_name, media_full_name,
+                           address, pay_method, create_id,
+                           create_time, modify_id, modify_time,
+                           received_subject, received_acct, bank_name,
+                           remark, new_media, new_rebate,
+                           rebate_instructions, del_flag, media_amount,
+                           deposit_amount, deposit_status, period_start,
+                           period_end, co_id, total_deposit_amount,
+                           total_recharge_amount, media_flag, split_flag,
+                           is_small_media)
+        values (#{id,jdbcType=BIGINT}, #{mediaName,jdbcType=VARCHAR}, #{mediaFullName,jdbcType=VARCHAR},
+                #{address,jdbcType=VARCHAR}, #{payMethod,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT},
+                #{createTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=BIGINT}, #{modifyTime,jdbcType=TIMESTAMP},
+                #{receivedSubject,jdbcType=VARCHAR}, #{receivedAcct,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR},
+                #{remark,jdbcType=VARCHAR}, #{newMedia,jdbcType=VARCHAR}, #{newRebate,jdbcType=VARCHAR},
+                #{rebateInstructions,jdbcType=VARCHAR}, #{delFlag,jdbcType=TINYINT}, #{mediaAmount,jdbcType=DECIMAL},
+                #{depositAmount,jdbcType=DECIMAL}, #{depositStatus,jdbcType=TINYINT}, #{periodStart,jdbcType=DATE},
+                #{periodEnd,jdbcType=DATE}, #{coId,jdbcType=BIGINT}, #{totalDepositAmount,jdbcType=DECIMAL},
+                #{totalRechargeAmount,jdbcType=DECIMAL}, #{mediaFlag,jdbcType=INTEGER}, #{splitFlag,jdbcType=TINYINT},
+                #{isSmallMedia,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.dubm.apply.mybatis.po.Media">
+        insert into media
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="mediaName != null">
+                media_name,
+            </if>
+            <if test="mediaFullName != null">
+                media_full_name,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="payMethod != null">
+                pay_method,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyId != null">
+                modify_id,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="receivedSubject != null">
+                received_subject,
+            </if>
+            <if test="receivedAcct != null">
+                received_acct,
+            </if>
+            <if test="bankName != null">
+                bank_name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="newMedia != null">
+                new_media,
+            </if>
+            <if test="newRebate != null">
+                new_rebate,
+            </if>
+            <if test="rebateInstructions != null">
+                rebate_instructions,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+            <if test="mediaAmount != null">
+                media_amount,
+            </if>
+            <if test="depositAmount != null">
+                deposit_amount,
+            </if>
+            <if test="depositStatus != null">
+                deposit_status,
+            </if>
+            <if test="periodStart != null">
+                period_start,
+            </if>
+            <if test="periodEnd != null">
+                period_end,
+            </if>
+            <if test="coId != null">
+                co_id,
+            </if>
+            <if test="totalDepositAmount != null">
+                total_deposit_amount,
+            </if>
+            <if test="totalRechargeAmount != null">
+                total_recharge_amount,
+            </if>
+            <if test="mediaFlag != null">
+                media_flag,
+            </if>
+            <if test="splitFlag != null">
+                split_flag,
+            </if>
+            <if test="isSmallMedia != null">
+                is_small_media,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="mediaName != null">
+                #{mediaName,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaFullName != null">
+                #{mediaFullName,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="payMethod != null">
+                #{payMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                #{modifyId,jdbcType=BIGINT},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receivedSubject != null">
+                #{receivedSubject,jdbcType=VARCHAR},
+            </if>
+            <if test="receivedAcct != null">
+                #{receivedAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="newMedia != null">
+                #{newMedia,jdbcType=VARCHAR},
+            </if>
+            <if test="newRebate != null">
+                #{newRebate,jdbcType=VARCHAR},
+            </if>
+            <if test="rebateInstructions != null">
+                #{rebateInstructions,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=TINYINT},
+            </if>
+            <if test="mediaAmount != null">
+                #{mediaAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="depositAmount != null">
+                #{depositAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="depositStatus != null">
+                #{depositStatus,jdbcType=TINYINT},
+            </if>
+            <if test="periodStart != null">
+                #{periodStart,jdbcType=DATE},
+            </if>
+            <if test="periodEnd != null">
+                #{periodEnd,jdbcType=DATE},
+            </if>
+            <if test="coId != null">
+                #{coId,jdbcType=BIGINT},
+            </if>
+            <if test="totalDepositAmount != null">
+                #{totalDepositAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalRechargeAmount != null">
+                #{totalRechargeAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="mediaFlag != null">
+                #{mediaFlag,jdbcType=INTEGER},
+            </if>
+            <if test="splitFlag != null">
+                #{splitFlag,jdbcType=TINYINT},
+            </if>
+            <if test="isSmallMedia != null">
+                #{isSmallMedia,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dubm.apply.mybatis.po.Media">
+        update media
+        <set>
+            <if test="mediaName != null">
+                media_name = #{mediaName,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaFullName != null">
+                media_full_name = #{mediaFullName,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="payMethod != null">
+                pay_method = #{payMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                modify_id = #{modifyId,jdbcType=BIGINT},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receivedSubject != null">
+                received_subject = #{receivedSubject,jdbcType=VARCHAR},
+            </if>
+            <if test="receivedAcct != null">
+                received_acct = #{receivedAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                bank_name = #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="newMedia != null">
+                new_media = #{newMedia,jdbcType=VARCHAR},
+            </if>
+            <if test="newRebate != null">
+                new_rebate = #{newRebate,jdbcType=VARCHAR},
+            </if>
+            <if test="rebateInstructions != null">
+                rebate_instructions = #{rebateInstructions,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=TINYINT},
+            </if>
+            <if test="mediaAmount != null">
+                media_amount = #{mediaAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="depositAmount != null">
+                deposit_amount = #{depositAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="depositStatus != null">
+                deposit_status = #{depositStatus,jdbcType=TINYINT},
+            </if>
+            <if test="periodStart != null">
+                period_start = #{periodStart,jdbcType=DATE},
+            </if>
+            <if test="periodEnd != null">
+                period_end = #{periodEnd,jdbcType=DATE},
+            </if>
+            <if test="coId != null">
+                co_id = #{coId,jdbcType=BIGINT},
+            </if>
+            <if test="totalDepositAmount != null">
+                total_deposit_amount = #{totalDepositAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalRechargeAmount != null">
+                total_recharge_amount = #{totalRechargeAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="mediaFlag != null">
+                media_flag = #{mediaFlag,jdbcType=INTEGER},
+            </if>
+            <if test="splitFlag != null">
+                split_flag = #{splitFlag,jdbcType=TINYINT},
+            </if>
+            <if test="isSmallMedia != null">
+                is_small_media = #{isSmallMedia,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dubm.apply.mybatis.po.Media">
+        update media
+        set media_name            = #{mediaName,jdbcType=VARCHAR},
+            media_full_name       = #{mediaFullName,jdbcType=VARCHAR},
+            address               = #{address,jdbcType=VARCHAR},
+            pay_method            = #{payMethod,jdbcType=VARCHAR},
+            create_id             = #{createId,jdbcType=BIGINT},
+            create_time           = #{createTime,jdbcType=TIMESTAMP},
+            modify_id             = #{modifyId,jdbcType=BIGINT},
+            modify_time           = #{modifyTime,jdbcType=TIMESTAMP},
+            received_subject      = #{receivedSubject,jdbcType=VARCHAR},
+            received_acct         = #{receivedAcct,jdbcType=VARCHAR},
+            bank_name             = #{bankName,jdbcType=VARCHAR},
+            remark                = #{remark,jdbcType=VARCHAR},
+            new_media             = #{newMedia,jdbcType=VARCHAR},
+            new_rebate            = #{newRebate,jdbcType=VARCHAR},
+            rebate_instructions   = #{rebateInstructions,jdbcType=VARCHAR},
+            del_flag              = #{delFlag,jdbcType=TINYINT},
+            media_amount          = #{mediaAmount,jdbcType=DECIMAL},
+            deposit_amount        = #{depositAmount,jdbcType=DECIMAL},
+            deposit_status        = #{depositStatus,jdbcType=TINYINT},
+            period_start          = #{periodStart,jdbcType=DATE},
+            period_end            = #{periodEnd,jdbcType=DATE},
+            co_id                 = #{coId,jdbcType=BIGINT},
+            total_deposit_amount  = #{totalDepositAmount,jdbcType=DECIMAL},
+            total_recharge_amount = #{totalRechargeAmount,jdbcType=DECIMAL},
+            media_flag            = #{mediaFlag,jdbcType=INTEGER},
+            split_flag            = #{splitFlag,jdbcType=TINYINT},
+            is_small_media        = #{isSmallMedia,jdbcType=TINYINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!-- config params as the following -->
+                        <value>helperDialect=mysql</value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+
+</mapper>

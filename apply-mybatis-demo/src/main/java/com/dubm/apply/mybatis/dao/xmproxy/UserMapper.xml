@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dubm.apply.mybatis.dao.xmproxy.UserMapper">
+    <cache flushInterval="3600000"/>
+    <resultMap id="baseMap" type="UserExt">
+        <id column="id" property="id"/>
+        <result column="acct" property="acct"/>
+        <association property="dept" javaType="Dept">
+            <id column="dept_id" property="id"/>
+            <result column="dept_name" property="deptName"/>
+            <result column="type" property="type"/>
+        </association>
+        <collection property="orders" ofType="CustomerOrder">
+            <id column="order_id" property="id"/>
+            <result column="order_no" property="orderNo"/>
+            <result column="customer_name" property="customerName"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="lazyMap" type="UserExt">
+        <id column="id" property="id"/>
+        <result column="acct" property="acct"/>
+        <collection property="orders" ofType="CustomerOrder"
+                    select="com.dubm.apply.mybatis.dao.xmproxy.CustomerOrderMapper.selectByCreateId"
+                    column="id"/>
+    </resultMap>
+
+    <select id="selectById" resultType="User" useCache="true" flushCache="true">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="selectWithDept" resultType="UserExt">
+        select u.*,
+               d.id        as "dept.id",
+               d.dept_name as "dept.dept_name",
+               d.type      as "dept.type"
+        from user u
+                 join dept d on u.dept_id = d.id
+        where u.id = #{id}
+    </select>
+
+    <select id="selectWithDeptToMap" resultMap="baseMap">
+        select *
+        from user u
+                 join dept d on u.dept_id = d.id
+        where u.id = #{id}
+    </select>
+
+    <select id="selectWithOrders" resultMap="baseMap">
+        select u.*, o.id order_id, o.order_no, o.customer_name
+        from user u
+                 join customer_order o on u.id = o.create_id
+        where u.id = #{id}
+    </select>
+
+    <select id="selectByLazyLoad" resultMap="lazyMap">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <update id="updateNameById">
+        update  user set real_name = #{name} where id = #{id}
+    </update>
+</mapper>

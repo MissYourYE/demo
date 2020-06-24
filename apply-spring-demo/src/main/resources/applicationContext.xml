@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<!--        <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--            <constructor-arg name="id" value="1"/>-->
+<!--            <constructor-arg name="acct" value="dubm"/>-->
+<!--        </bean>-->
+
+    <!--    <bean id="user" class="com.dubm.apply.spring.po.User" p:id="1" p:acct="dubm" p:dept-ref="dept"/>-->
+
+
+    <!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+    <!--        <constructor-arg index="0" value="1"/>-->
+    <!--        <constructor-arg index="1" value="dubm"/>-->
+    <!--    </bean>-->
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="acct" value="dubm"/>-->
+<!--        <property name="dept" ref="dept"/>-->
+<!--    </bean>-->
+<!--    <bean id="dept" class="com.dubm.apply.spring.po.Dept"/>-->
+
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="hobbies">-->
+<!--            <list>-->
+<!--                <value>游泳</value>-->
+<!--                <value>游戏</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="hobbies">-->
+<!--            <set>-->
+<!--                <value>张三</value>-->
+<!--                <value>李四</value>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="cities">-->
+<!--            <map>-->
+<!--                <entry key="1" value="北京"/>-->
+<!--                <entry key="2" value="上海"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="pro">-->
+<!--            <map>-->
+<!--                <entry key="1" value="北京"/>-->
+<!--                <entry key="2" value="上海"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="user" class="com.dubm.apply.spring.po.User">-->
+<!--        <property name="pro">-->
+<!--            <props>-->
+<!--                <prop key="1">苹果</prop>-->
+<!--                <prop key="2">华为</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+    <!--    <bean id="staticUser" class="com.dubm.apply.spring.ioc.StaticFactory" factory-method="createUser"/>-->
+
+    <!--    <bean id="instanceFactory" class="com.dubm.apply.spring.ioc.InstanceFactory"/>-->
+    <!--    <bean id="instanceUser" factory-bean="instanceFactory" factory-method="createUser"/>-->
+
+
+<!--    <context:component-scan base-package="com.dubm.apply.spring"/>-->
+</beans>

@@ -1,5 +1,6 @@
 import com.dubm.UserServiceImpl;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

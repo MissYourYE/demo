@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--IoC容器扫包配置-->
+    <context:component-scan base-package="com.dubm.apply.spring.springaop"/>
+
+    <aop:aspectj-autoproxy/>
+<!--    &lt;!&ndash;配置通知、增强类bean&ndash;&gt;-->
+<!--    <bean id="myAdvice" class="com.dubm.apply.spring.springaop.xml.MyAdvice"/>-->
+<!--    &lt;!&ndash;aop配置&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="myPointcut" expression="execution(void com.dubm.apply.spring.springaop.Target.sayHello())"/>-->
+<!--        &lt;!&ndash;配置切面&ndash;&gt;-->
+<!--        &lt;!&ndash;由advise增强+pointcut切入点组成&ndash;&gt;-->
+<!--        <aop:aspect ref="myAdvice">-->
+<!--            <aop:before method="log" pointcut-ref="myPointcut"/>-->
+<!--            <aop:after-returning method="log" pointcut-ref="myPointcut"/>-->
+<!--            <aop:after method="log" pointcut-ref="myPointcut"/>-->
+<!--            <aop:around method="log" pointcut-ref="myPointcut"/>-->
+<!--            <aop:after-throwing method="log" pointcut-ref="myPointcut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+</beans>
