@@ -23,6 +23,8 @@ public class SpringJedisPoolTest {
         Jedis jedis = jedisPool.getResource();
 //        Set<String> keys = jedis.keys("*");
         Map<String, String> user = jedis.hgetAll("user");
+
+        System.out.println("test");
         jedis.close();
     }
 }
