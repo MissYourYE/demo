@@ -19,7 +19,7 @@ public class JedisTest {
     public void testPool() {
         JedisPool jedisPool = new JedisPool("47.114.6.31", 6379);
         Jedis jedis = jedisPool.getResource();
-        String str = jedis.get("test1");
+        String str = jedis.get("test1==================");
         System.out.println(str);
         jedis.close();
         jedisPool.close();
