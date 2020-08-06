@@ -1,7 +1,6 @@
 package com.dubm.apply.mybatis.dao.annotation;
 
 import com.dubm.apply.mybatis.po.User;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;

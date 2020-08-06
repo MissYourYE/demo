@@ -1,24 +1,19 @@
 package com.dubm.apply.mybatis.dao.xmproxy;
 
 import com.dubm.apply.mybatis.po.User;
-import com.dubm.apply.mybatis.po.UserExt;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
 
-import java.io.Flushable;
+import java.util.List;
 
 public interface UserMapper {
+    int insert(User record);
 
-    User selectById(Long id);
+    int insertSelective(User record);
 
-    UserExt selectWithDept(Long id);
+    User selectByPrimaryKey(Integer id);
 
-    UserExt selectWithDeptToMap(Long id);
+    int updateByPrimaryKeySelective(User record);
 
-    UserExt selectWithOrders(Long id);
+    int updateByPrimaryKey(User record);
 
-    UserExt selectByLazyLoad(Long id);
-
-//    @Update("update user set real_name = #{name} where id = #{id}")
-    int updateNameById(@Param("id") Long id,@Param("name") String name);
+    void batchInsert(List<User> users);
 }
